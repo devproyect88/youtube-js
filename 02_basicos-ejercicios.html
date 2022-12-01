@@ -12,14 +12,29 @@
   <script>
     /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
 
+    let caracteres = "Hola Mundo";
+    function contar(){
+      console.log(caracteres.length);
+    }
+    contar();
+  
+    
 
     /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+    let texto = "Hola Mundo";
+    function recortar(texto, n) {
+      console.log(texto.substring(0,n));
+    }
+    recortar(texto,4);
 
-
-
-    /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
+      
+     /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
      miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
-
+  let textos = "Hola que tal";
+  function separar(textos, x) {
+    console.log(textos.split(x));    
+  }
+  separar(textos," ");  
 
 
     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
