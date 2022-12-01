@@ -551,8 +551,8 @@
 
 
     /* **********     Curso JavaScript: 15. Ciclos (Loops) - #jonmircha     ********** */
-
-    /*  let contador = 0;
+/*
+     let contador = 0;
 
      while (contador < 10) {
        console.log("while " + contador);
@@ -569,9 +569,10 @@
       sentencias que ejecuta el for
       sentencias que ejecuta el for
       sentencias que ejecuta el for
-    } */
-
-    /* for (let i = 0; i < 10; i++) {
+    } 
+    */
+    /*
+    for (let i = 0; i < 10; i++) {
       console.log("for " + i);
     }
 
@@ -588,19 +589,15 @@
     }
 
     for (const propiedad in jon) {
-      console.log(`Key: ${propiedad}, Value: ${jon[propiedad]}`);
+      console.log(`Propiedad: ${propiedad}, Valor: ${jon[propiedad]}`);
     }
 
-    for (const elemento of numeros) {
-      console.log(elemento);
-    }
-
-    let cadena = "Hola Mundo";
+      let cadena = "Hola Mundo";
 
     for (const caracter of cadena) {
       console.log(caracter);
-    } */
-
+    }
+    */
 
 
 
@@ -677,14 +674,14 @@
     };
 
     let { nombre, edad, apellido } = persona;
-    console.log(nombre, apellido, edad); */
+    console.log(nombre, apellido, edad);*/
 
 
 
 
 
     /* **********     Curso JavaScript: 19. Objetos literales - #jonmircha     ********** */
-    /* let nombre = "kEnAi",
+    /*let nombre = "kEnAi",
       edad = 7;
 
     const perro = {
@@ -704,18 +701,24 @@
       raza: "Callejero",
       ladrar() {
         console.log("guauu guauu guauu!!!")
+      },
+      perriar() {
+        console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`)
       }
     }
 
     console.log(dog);
-    dog.ladrar(); */
-
+    dog.ladrar();
+    perro.ladrar();
+    dog.ladrar();
+    dog.perriar();
+*/
 
 
 
 
     /* **********     Curso JavaScript: 20. Parámetros REST & Operador Spread - #jonmircha     ********** */
-    /* function sumar(a, b, ...c) {
+    function sumar(a, b, ...c) {
       let resultado = a + b;
 
       c.forEach(function (n) {
@@ -740,7 +743,7 @@
     console.log(arr1, arr2);
 
     const arr3 = [...arr1, ...arr2];
-    console.log(arr3); */
+    console.log(arr3);
 
 
 
