@@ -38,14 +38,50 @@
 
 
     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
+    let repetido = "Hola Mundo ";
+    function repetir(repetido, z) {
+      console.log(repetido.repeat(z));
+    }
+    repetir(repetido, 3);
 
 
 
-    /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
+/* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
+let parametro = "Hola Mundo";
+let nuevaCadena = "";
+function invertirPalabra(parametro) {
+  for (let i = parametro.length - 1; i >= 0; i--) 
+    {nuevaCadena = nuevaCadena + parametro[i]
+    };
+  console.log(nuevaCadena);
+    };
+   invertirPalabra(parametro);
 
+/*Se realiza un segundo ejercicio de comprensión del for en inversa. me paso que la funcion estaba correcta sin embargo como no la estaba invocando la consola no retornaba nada. A TENER EN CUENTA*/   
 
+let revertir = "Prueba 2",
+suma = "";
+function prueba(revertir){
+for (let i = revertir.length -1; i>=0; i--){
+	suma = suma + revertir[i];
+}
+console.log(suma);
+};
 
-    /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
+prueba(revertir);
+
+   
+/* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
+function vecesRepetidas(textol, referente){
+let nuevoArrayT = textol.split(" ");
+let suma = [];
+for (let i=0; i<nuevoArrayT.length;i++)
+  if(nuevoArrayT[i]===referente){
+  suma.push(nuevoArrayT[i])};
+  console.log(suma.length);
+};
+       
+vecesRepetidas("hola mundo adios mundo", "mundo");
 
 
 
