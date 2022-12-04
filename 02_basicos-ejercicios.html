@@ -58,8 +58,6 @@ function invertirPalabra(parametro) {
    invertirPalabra(parametro);
 
 /*Se realiza un segundo ejercicio de comprensión del for en inversa. me paso que la funcion estaba correcta sin embargo como no la estaba invocando la consola no retornaba nada. A TENER EN CUENTA*/   
-
-let revertir = "Prueba 2",
 suma = "";
 function prueba(revertir){
 for (let i = revertir.length -1; i>=0; i--){
@@ -68,7 +66,7 @@ for (let i = revertir.length -1; i>=0; i--){
 console.log(suma);
 };
 
-prueba(revertir);
+prueba("Palindromo");
 
    
 /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
@@ -85,7 +83,20 @@ vecesRepetidas("hola mundo adios mundo", "mundo");
 
 
 
-    /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+/* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+
+function validarPalindromo(texto) {
+  let derecho = texto,
+      reverso = "";
+  for (let i = texto.length - 1; i >=0; i--){
+      reverso = reverso + texto[i];
+        if (texto === reverso){
+        console.log(true);
+        }
+  }
+}
+
+validarPalindromo("salas");
 
 
 
