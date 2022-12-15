@@ -278,42 +278,60 @@
 
 
     /* **********     Curso JavaScript: 11. Arreglos (Arrays) - #jonmircha     ********** */
+    /*
+    const a = [];
+    const b = [1, true, "Hola", ["A", "B", "C", [1, 2, 3]]];
+    console.log(a);
+    console.log(b);
+    console.log(b.length);
+    console.log(b[2]);
+    console.log(b[0]);
+    console.log(b[3]);
+    console.log(b[3][2]);
+    console.log(b[3][3][0]);
 
-    /*     const a = [];
-        const b = [1, true, "Hola", ["A", "B", "C", [1, 2, 3]]];
-        console.log(a);
-        console.log(b);
-        console.log(b.length);
-        console.log(b[2]);
-        console.log(b[0]);
-        console.log(b[3]);
-        console.log(b[3][2]);
-        console.log(b[3][3][0]);
+    const c = Array.of("X", "Y", "Z", 9, 8, 7);
+    console.log(c);
 
-        const c = Array.of("X", "Y", "Z", 9, 8, 7);
-        console.log(c);
+    const d = Array(100).fill(false);
+    console.log(d);
 
-        const d = Array(100).fill(false);
-        console.log(d);
+    const g = Array(1000).fill("hola");
+    console.log(g);
+    const z = new Array();
+    console.log(z);
 
-        const e = new Array();
-        console.log(e);
+    const e = new Array();
+    console.log(e);
 
-        const f = new Array(1, 2, 3, true, false);
-        console.log(f);
+    const f = new Array(1, 2, 3, true, false);
+    console.log(f);
 
-        const colores = ["Rojo", "Verde", "Azul"];
-        console.log(colores);
+    const colores = ["Rojo", "Verde", "Azul"];
+    console.log(colores);
 
-        colores.push("Negro");
-        console.log(colores);
+    colores.push("Negro");
+    console.log(colores);
 
-        colores.pop();
-        console.log(colores);
+    colores.pop();
+    console.log(colores);
 
-        colores.forEach(function (el, index) {
-          console.log(`<li id="${index}">${el}</li>`);
-        }); */
+    colores.forEach(function (el, index) {
+      console.log(`<li id="${index}">${el}</li>`);
+    });
+
+    colores.forEach((elemento, indice)=>{
+      console.log(`estoy en el indice ${indice} y mi valor es ${elemento}`);
+    });
+    console.log(`Separar codigo---------------------------------------------------------------------------`);
+
+    const caminar = [1,2,3,4,5,6,7,8,9];
+
+    caminar.map(elemento=>{
+      console.log(elemento +" es mi nivel de estupidez");
+    });
+    */
+
 
 
 
@@ -551,7 +569,7 @@
 
 
     /* **********     Curso JavaScript: 15. Ciclos (Loops) - #jonmircha     ********** */
-/*
+    /*
      let contador = 0;
 
      while (contador < 10) {
@@ -560,10 +578,19 @@
      }
 
 
+     let validador = 3;
+     while(validador <500){
+      console.log(validador);
+      validador = validador+100;
+     }
+
+
+
+
      do {
        console.log("do while " + contador);
        contador++;
-     } while (contador < 10); */
+     } while (contador < 10);
 
     /* for (inicialización de variable; condición; decremento o incremento) {
       sentencias que ejecuta el for
@@ -718,7 +745,7 @@
 
 
     /* **********     Curso JavaScript: 20. Parámetros REST & Operador Spread - #jonmircha     ********** */
-    function sumar(a, b, ...c) {
+    /*function sumar(a, b, ...c) {
       let resultado = a + b;
 
       c.forEach(function (n) {
@@ -743,7 +770,7 @@
     console.log(arr1, arr2);
 
     const arr3 = [...arr1, ...arr2];
-    console.log(arr3);
+    console.log(arr3);*/
 
 
 
@@ -894,7 +921,7 @@
 
 
     /* **********     Curso JavaScript: 24. Clases - #jonmircha y Curso JavaScript: 25. Métodos estáticos, getters y setters - #jonmircha     ********** */
-    /* class Animal {
+    /*  class Animal {
       //el constructor es un método especial que se ejecuta en el momento de instanciar la clase
       constructor(nombre, genero) {
         this.nombre = nombre;
@@ -909,14 +936,19 @@
       saludar() {
         console.log(`Hola me llamo ${this.nombre}`);
       }
+
+      hablar() {
+        console.log(`Hola mi nombre es ${this.nombre} y soy un animal que habla`);
+      }
     }
 
-    class Perro extends Animal {
+        class Perro extends Animal {
       constructor(nombre, genero, tamanio) {
         //con el método super() se manda a llamar el constructor de la clase padre
         super(nombre, genero);
         this.tamanio = tamanio;
         this.raza = null;
+        this.origen= null;
       }
 
       sonar() {
@@ -937,6 +969,14 @@
         return this.raza;
       }
 
+      get getOrigen() {
+        return this.origen;
+      }
+
+      set setOrigen(origen){
+        this.origen = origen;
+      }
+
       set setRaza(raza) {
         this.raza = raza;
       }
@@ -944,8 +984,27 @@
 
     Perro.queEres();
 
+    class Carro extends Animal{
+      constructor(nombre, genero,marca, cilindraje, tFuel){
+        super(nombre, genero);
+        this.marca = marca;
+        this.cilindraje = cilindraje;
+        this.tFuel = tFuel;
+      }
+
+      encender (marca, tFuel) {
+        console.log(`Hola soy un vehiculo tipo ${this.marca} y consumo combustible ${this.tFuel} y mi motor es de ${this.cilindraje} centrimetos cubicos]`);
+      }
+
+      static comunicar(){
+        console.log("Hola estoy aprendiendo a usar la propiedad static para poder usar el metodo fuera de la clase");
+      }
+
+    }
+
     const mimi = new Animal("Mimi", "Hembra"),
-      scooby = new Perro("Scooby", "Macho", "Gigante");
+      scooby = new Perro("Scooby", "Macho", "Gigante"),
+      audi = new Carro("Audi","deportivo", "Audi", 2500, "Gasolina");
 
     console.log(mimi);
     mimi.saludar();
@@ -956,14 +1015,26 @@
     scooby.ladrar();
     console.log(scooby.getRaza);
     scooby.setRaza = "Grán Danés";
-    console.log(scooby.getRaza); */
+    console.log(scooby.getRaza);
+    scooby.hablar();
+    audi.encender();
+    console.log(audi);
+    audi.saludar();
+    audi.sonar();
+    console.log(`Jona aprende a programar es una chimba y te queda remelo`)
+        console.log(audi.setOrigen);
+    audi.setOrigen = "Alemania";
+    console.log(audi.getOrigen);
+    Carro.comunicar();
+    console.log(scooby.getOrigen);
+    scooby.setOrigen = "Colombia";
+    console.log(scooby.getOrigen);
+    scooby.setRaza = "Gran Dannes";
+    console.log(scooby.getRaza);*/
 
-
-
-
-
+    
     /* **********     Curso JavaScript: 26. Objeto console - #jonmircha     ********** */
-    /* console.log(console);
+    /*console.log(console);
     console.error("Esto es un error");
     console.warn("Esto es un aviso");
     console.info("Esto es un mensje informativo");
@@ -1003,8 +1074,8 @@
     console.groupEnd();
     console.clear();
     console.log(console);
-    console.table(Object.entries(console).sort());
-
+    console.table(Object.entries(console).sort());*/
+/*
     const numeros = [1, 2, 3, 4, 5],
       vocales = ["a", "e", "i", "o", "u"];
 
@@ -1077,25 +1148,44 @@
     let cumpleJon = new Date(1984, 4, 23);
     console.log(cumpleJon); */
 
+    
 
-
-
-
-    /* **********     Curso JavaScript: 28. Objeto Math - #jonmircha     ********** */
-    /* console.log(Math);
+    /* **********     Curso JavaScript: 28. Objeto Math - /#jonmircha     ********** */
+    /*console.log(Math);
     console.log(Math.PI);
     console.log(Math.abs(-7.8));
     console.log(Math.ceil(7.2));
     console.log(Math.floor(7.8));
-    console.log(Math.round(7.49));
+    console.log(Math.round(7.5));
     console.log(Math.sqrt(81));
     console.log(Math.pow(2, 5));
     console.log(Math.sign(-0.3)); // -1 0 1
     console.log(Math.random());
-    console.log(Math.round(Math.random() * 1000)); */
+    console.log(Math.random()*1000);
+    console.log(Math.round(Math.random() * 1000));
+  
+  function aleatorio(inicio, fin) {
+    console.log(Math.round((Math.random() * (fin - inicio)+inicio)));
+    
+}
+aleatorio(501, 600);
+
+function esPrimo(numero) {
+      for (let i=2; i<numero; i++){
+      if (numero%i===0){
+        return false;
+        }
+      }
+      return `el numero ${numero} es primo`;
+  }
+           
+    
+        
 
 
+console.log(esPrimo(13));*/
 
+// 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89,97
 
 
     /* **********     Curso JavaScript: 29. Operador de Cortocircuito - #jonmircha     ********** */

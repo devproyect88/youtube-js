@@ -17,98 +17,176 @@
       console.log(caracteres.length);
     }
     contar();
+    // console.log(caracteres.indexOf("Hola"));
+    // console.log(caracteres[0]);
+
+  function contar2(cadena){
+    if(typeof(cadena) !=="string"){
+      console.log(`lo que estas ingresando no es un texto, intentalo nuevamente`);
+    }
+    else {
+      console.log(cadena.length);
+    }
+  }
   
-    
-
-    /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
-    let texto = "Hola Mundo";
-    function recortar(texto, n) {
-      console.log(texto.substring(0,n));
-    }
-    recortar(texto,4);
-
-      
-     /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
-     miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
-  let textos = "Hola que tal";
-  function separar(textos, x) {
-    console.log(textos.split(x));    
-  }
-  separar(textos," ");  
+  contar2("Hola Mundo");
+  
 
 
-    /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
-    let repetido = "Hola Mundo ";
-    function repetir(repetido, z) {
-      console.log(repetido.repeat(z));
-    }
-    repetir(repetido, 3);
+//     miCadena="breie, pepper jack, cheddiar, pepper, pepper, pepper, pe, pper, ¨Pe"
+//     //        0123456...
+//     cuenta = 0; //1 
+//     posicion = miCadena.indexOf("pepper");
+//     while ( posicion != -1 ) {
+//     cuenta++;
+//     posicion = miCadena.indexOf("pepper",posicion+1);
+//     console.log(typeof(posicion));
+// }
+
+// console.log(cuenta);
 
 
-
-/* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
-let parametro = "Hola Mundo";
-let nuevaCadena = "";
-function invertirPalabra(parametro) {
-  for (let i = parametro.length - 1; i >= 0; i--) 
-    {nuevaCadena = nuevaCadena + parametro[i]
-    };
-  console.log(nuevaCadena);
-    };
-   invertirPalabra(parametro);
-
-/*Se realiza un segundo ejercicio de comprensión del for en inversa. me paso que la funcion estaba correcta sin embargo como no la estaba invocando la consola no retornaba nada. A TENER EN CUENTA*/   
-suma = "";
-function prueba(revertir){
-for (let i = revertir.length -1; i>=0; i--){
-	suma = suma + revertir[i];
-}
-console.log(suma);
-};
-
-prueba("Palindromo");
-
+//   console.log(cuenta);
    
-/* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
-function vecesRepetidas(textol, referente){
-let nuevoArrayT = textol.split(" ");
-let suma = [];
-for (let i=0; i<nuevoArrayT.length;i++)
-  if(nuevoArrayT[i]===referente){
-  suma.push(nuevoArrayT[i])};
-  console.log(suma.length);
-};
-       
-vecesRepetidas("hola mundo adios mundo", "mundo");
+//     /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+  function recortar(texto, n) {
+    if(typeof(texto) !== "string"){
+      console.log(`${texto} no es un texto, valida nuevamente`)
+      }
+      else{
+      console.log(texto.substring(0,n)
+      );
+    }
+  }
+  
+  recortar("Hola Mundo",4);
 
-
-
-/* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
-
-function validarPalindromo(texto) {
-  let derecho = texto,
-      reverso = "";
-  for (let i = texto.length - 1; i >=0; i--){
-      reverso = reverso + texto[i];
-        if (texto === reverso){
-        console.log(true);
-        }
+  
+      
+//      /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
+  
+let textos = "Me gustan las validaciones";
+function separar(textos, separador) {
+  if(typeof(textos) !=="string"){
+    console.log(`${textos} no es un string, intentalo nuevamente`);
+  }
+  else{
+  console.log(textos.split(separador));    
   }
 }
-
-validarPalindromo("salas");
-
-
-
-    /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
+separar(textos," ");  
 
 
 
-    /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
+
+//     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
+let repetido = "Hola Mundo ";
+function repetir(repetido, cuantasv) {
+  if(typeof(repetido)!=="string"){
+    console.log(repetido +" no es una cadena de string");
+  }
+  else{
+  console.log(repetido.repeat(cuantasv));
+  }
+}
+repetir(repetido, 3);
 
 
 
-    /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
+//     /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
+//     let parametro = "Hola Mundo";
+//     let nuevaCadena = "";
+//     function invertirPalabra(parametro) {
+//       for (let i = parametro.length - 1; i >= 0; i--) 
+//         {nuevaCadena = nuevaCadena + parametro[i]
+//         };
+//       console.log(nuevaCadena);
+//         };
+//       invertirPalabra(parametro);
+
+//       /*Se realiza un segundo ejercicio de comprensión del for en inversa. me paso que la funcion estaba correcta sin embargo como no la estaba invocando la consola no retornaba nada. A TENER EN CUENTA*/   
+//       suma = "";
+//       function prueba(revertir){
+//       for (let i = revertir.length -1; i>=0; i--){
+//         suma = suma + revertir[i];
+//       }
+//       console.log(suma);
+//       };
+
+//       prueba("Palindromo");
+
+        
+//       /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
+//       function vecesRepetidas(textol, referente){
+//       let nuevoArrayT = textol.split(" ");
+//       let suma = [];
+//       for (let i=0; i<nuevoArrayT.length;i++)
+//         if(nuevoArrayT[i]===referente){
+//         suma.push(nuevoArrayT[i])};
+//         console.log(suma.length);
+//       };
+            
+//       vecesRepetidas("hola mundo adios mundo", "mundo");
+
+
+
+//       /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+
+//       function validarPalindromo(texto) {
+//         let reverso = "";
+//         for (let i = texto.length - 1; i >=0; i--){
+//             reverso = reverso + texto[i];
+//               if (texto === reverso){
+//               console.log(true);
+//               }
+//               // else if (texto !== reverso){
+//               //   console.log(`la palabra ${texto} no es un palindromo`);
+//               // }
+//               // }
+//         }
+//       }
+
+
+//       validarPalindromo("salas");
+
+
+
+
+//       /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
+//       function eliminarPatron(cadena = "xyz1, xyz2, xyz3, xyz4 y xyz5" , patron = "xyz") {
+//         let = nuevoPatron = "";
+//         for (let i = 0; i = cadena.length; i++){
+//           if(cadena[i] !==patron[i]){
+//           nuevoPatron.push(cadena[i]);
+//           }        
+//         }
+//         console.log(nuevoPatron);       
+//       }
+
+//       /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
+//       function aleatorio(inicio, fin) {
+//         console.log(Math.round((Math.random() * (fin - inicio)+inicio)));
+
+//       }
+//       aleatorio(501, 600);
+
+
+
+//     /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
+//     function capicua(numero){
+//       let reverso = "";
+//       for (let i = numero.length -1; i>=0; i--){
+//         reverso = reverso +numero[i];
+        
+//         }console.log(reverso);
+//         if(numero===reverso){
+//           return true;
+//         }
+//         return `No es capicua`;
+//       }
+//     console.log(capicua("2002"));
+
+    //tengo la situacion de que si es un numero al sumar numero con reverso no se produce el efecto esperado, se suma, no se adjunta.
 
 
 
@@ -117,12 +195,32 @@ validarPalindromo("salas");
 
 
     /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
-
+  
+/*
+    function esPrimo(numero) {
+      for (let i=2; i<numero; i++){
+        if(numero % i === 0){
+          return false;
+        }  
+      }
+     return true;
+    }
+*/
 
 
     /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
+    /*
+    function esPar(numero){
+      if(numero%2===0){
+        return "el numero " +numero + " es par";
+      } else {
+        return `el numero ${numero} es impar`};
+        
+  }
 
+    console.log(esPar(4));
 
+*/
 
     /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
 
