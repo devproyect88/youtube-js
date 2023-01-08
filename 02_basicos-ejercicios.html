@@ -12,217 +12,299 @@
   <script>
     /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
 
-    let caracteres = "Hola Mundo";
-    function contar(){
-      console.log(caracteres.length);
+    
+  const contar = function(caracteres){
+    if (!caracteres){
+      return console.log(`Debes ingresar texto`);
     }
-    contar();
-    // console.log(caracteres.indexOf("Hola"));
-    // console.log(caracteres[0]);
-
-  function contar2(cadena){
-    if(typeof(cadena) !=="string"){
-      console.log(`lo que estas ingresando no es un texto, intentalo nuevamente`);
+    if (typeof(caracteres) !== "string"){
+      return console.log(`el valor ${caracteres} no es una cadena de texto`);
     }
-    else {
-      console.log(cadena.length);
+    else{
+      return console.log(caracteres.length);
     }
   }
-  
-  contar2("Hola Mundo");
-  
+
+  //contar("Hola mundo");
 
 
-//     miCadena="breie, pepper jack, cheddiar, pepper, pepper, pepper, pe, pper, ¨Pe"
-//     //        0123456...
-//     cuenta = 0; //1 
-//     posicion = miCadena.indexOf("pepper");
-//     while ( posicion != -1 ) {
-//     cuenta++;
-//     posicion = miCadena.indexOf("pepper",posicion+1);
-//     console.log(typeof(posicion));
-// }
-
-// console.log(cuenta);
 
 
-//   console.log(cuenta);
-   
-//     /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
-  function recortar(texto, n) {
-    if(typeof(texto) !== "string"){
-      console.log(`${texto} no es un texto, valida nuevamente`)
-      }
-      else{
-      console.log(texto.substring(0,n)
-      );
-    }
-  }
-  
-  recortar("Hola Mundo",4);
 
-  
-      
+    /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+ 
+const recortar = (texto, n)=>{
+  if(typeof(texto) !== "string"){
+    console.log(`${texto} no es un texto, valida nuevamente`)
+    } 
+  (n===undefined) 
+    ? console.log(`debes ingrear un parametro para partir el texto`)
+    : console.log(texto.substring(0,n));
+} 
+
+//recortar("Hola Mundo", 4);
+
+
+
+
+
 //      /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
   
-let textos = "Me gustan las validaciones";
-function separar(textos, separador) {
-  if(typeof(textos) !=="string"){
-    console.log(`${textos} no es un string, intentalo nuevamente`);
+const separar = (textos, separador) => {
+  (!textos)
+    ? console.error(`Debes ingresar una cadena de texto`)
+    : (typeof textos !=="string")
+        ? console.log(`${textos} no es un string, intentalo nuevamente`)
+        : (!separador)
+            ? console.error(`Debes ingresar un separador`)
+            : console.log(textos.split(separador));
   }
-  else{
-  console.log(textos.split(separador));    
-  }
-}
-separar(textos," ");  
+
+// separar("Me gustan las validaciones"," ");
+// separar("Me gustan las validaciones");
+// separar(""," ");
+
+
 
 
 
 
 //     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
-let repetido = "Hola Mundo ";
-function repetir(repetido, cuantasv) {
-  if(typeof(repetido)!=="string"){
-    console.log(repetido +" no es una cadena de string");
+
+const  repetir = (repetido, cuantasV) =>{
+  if (!repetido){
+    return console.log(`No ingresaste un texto`);
+  }
+  if (typeof(repetido)!=="string"){
+    return console.log(repetido +" no es una cadena de string");
+  }
+  if (cuentasV === 0){
+    return console.error(`No puedes generar "${cuantasV}" repeticiones porque es 0`);
+  }
+  if (Math.sign(cuantasV) === -1){
+    return console.error(`El numero de veces no puede ser negativo`);
   }
   else{
-  console.log(repetido.repeat(cuantasv));
+  console.log(repetido.repeat(cuantasV));
   }
 }
-repetir(repetido, 3);
+//repetir("Hola mundo ",10);
+
+
 
 
 
 //     /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
-//     let parametro = "Hola Mundo";
-//     let nuevaCadena = "";
-//     function invertirPalabra(parametro) {
-//       for (let i = parametro.length - 1; i >= 0; i--) 
-//         {nuevaCadena = nuevaCadena + parametro[i]
-//         };
-//       console.log(nuevaCadena);
-//         };
-//       invertirPalabra(parametro);
 
-//       /*Se realiza un segundo ejercicio de comprensión del for en inversa. me paso que la funcion estaba correcta sin embargo como no la estaba invocando la consola no retornaba nada. A TENER EN CUENTA*/   
-//       suma = "";
-//       function prueba(revertir){
-//       for (let i = revertir.length -1; i>=0; i--){
-//         suma = suma + revertir[i];
-//       }
-//       console.log(suma);
-//       };
+const invertir= (cadena) => {
+  let resultado = "";
+  if (cadena===undefined){
+    return console.warn(`No estas ingresando valor, por favor ingresa una cadena de texto`);
+  } 
+  if (typeof(cadena) !== "string"){
+    return console.error(`el valor ${cadena} que ingresaste no es un texto`);
+    }
+  else{
+  for (let i = cadena.length-1; i>=0; i--) {
+    
+    resultado += cadena[i];
+  }
+  console.log(resultado);
+  }
+}  
+//invertir("Hola mundo");
 
-//       prueba("Palindromo");
 
-        
-//       /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
-//       function vecesRepetidas(textol, referente){
-//       let nuevoArrayT = textol.split(" ");
-//       let suma = [];
-//       for (let i=0; i<nuevoArrayT.length;i++)
-//         if(nuevoArrayT[i]===referente){
-//         suma.push(nuevoArrayT[i])};
-//         console.log(suma.length);
-//       };
-            
-//       vecesRepetidas("hola mundo adios mundo", "mundo");
+
+
+
+//       /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */  
+
+const vecesRepetidas = (textoL, referente) => {
+let contador = [];
+let validador = textoL.split(" ");
+for (let i =0; i<validador.length; i++){
+    if (referente===validador[i]){
+      contador.push(validador[i]) ;
+    }
+    
+  }
+  console.log(contador.length);
+}
+
+//vecesRepetidas("hola mundo adios mundo", "mundo");
+
+
 
 
 
 //       /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
 
-//       function validarPalindromo(texto) {
-//         let reverso = "";
-//         for (let i = texto.length - 1; i >=0; i--){
-//             reverso = reverso + texto[i];
-//               if (texto === reverso){
-//               console.log(true);
-//               }
-//               // else if (texto !== reverso){
-//               //   console.log(`la palabra ${texto} no es un palindromo`);
-//               // }
-//               // }
-//         }
-//       }
+const esPalindromo = (frase) => {
+   let validador = "";
+   if (!frase){
+    return console.error(`Debes ingresar una cadena de texto`);
+   }
+   if (typeof(frase)!=="string"){
+    return console.warn(`el texto que estas ingresando no es una string`)
+   }
 
+  for(let i=frase.length-1; i>=0; i--){
+       validador +=  frase[i];
+     if(validador.toUpperCase() === frase.toUpperCase()){
+      console.log(`La palabra ${frase} es un palindromo porque se lee igual al derecho y al reves ${validador}`);
+      }
+    }
+    if(validador.toUpperCase() !== frase.toUpperCase()){
+      console.log(`${frase} no es palindromo, no puedes leerlo igual en ambos sentidos`);
+    }
+}
+//esPalindromo("Salas");
 
-//       validarPalindromo("salas");
 
 
 
 
 //       /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
-//       function eliminarPatron(cadena = "xyz1, xyz2, xyz3, xyz4 y xyz5" , patron = "xyz") {
-//         let = nuevoPatron = "";
-//         for (let i = 0; i = cadena.length; i++){
-//           if(cadena[i] !==patron[i]){
-//           nuevoPatron.push(cadena[i]);
-//           }        
-//         }
-//         console.log(nuevoPatron);       
-//       }
+
+const eliminarCaracteres = (cadena, patron) => {
+  if (!cadena){
+    return console.log(`Debes ingresar una cadena de texto`);
+  }
+  if (typeof(cadena) !== "string"){
+    return console.error(`El valor ingresado no es texto, corrigelo e intentalo nuevamente`);
+  }
+  if (!patron){
+    return console.info(`Debes ingresar un patron a eliminar`);
+  }
+  else{
+    return console.log(cadena.replace(new RegExp(patron,"ig"),""));
+  }
+
+}
+
+//eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+//eliminarCaracteres("esto es una prueba donde vamos a hablar mierda", "[a-z]");
+
+
+
 
 //       /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
-//       function aleatorio(inicio, fin) {
-//         console.log(Math.round((Math.random() * (fin - inicio)+inicio)));
+const aleatorio = (inicio, fin) => {
+  console.log(Math.round((Math.random() * (fin - inicio)+inicio)));
 
-//       }
-//       aleatorio(501, 600);
+}
+//aleatorio(501, 600);
 
 
 
 //     /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
-//     function capicua(numero){
-//       let reverso = "";
-//       for (let i = numero.length -1; i>=0; i--){
-//         reverso = reverso +numero[i];
-        
-//         }console.log(reverso);
-//         if(numero===reverso){
-//           return true;
-//         }
-//         return `No es capicua`;
-//       }
-//     console.log(capicua("2002"));
 
-    //tengo la situacion de que si es un numero al sumar numero con reverso no se produce el efecto esperado, se suma, no se adjunta.
+const esCapicua = (numero) => {
+  if (!numero){
+    return console.log(`Debes ingresar un numero`);
+  }
+  if (typeof numero !== "number"){
+    return console.error(`el valor ${numero} ingresado no es un numero`);
+  }
+  numero = numero.toString();
+  let alReves = numero.split("").reverse().join("");
+  (numero === alReves)
+    ? console.log(`el numero ${numero} es capicua`)
+    : console.log(`el numero ${numero} no es capicua`);
+}
+
+//esCapicua("2002");
+//esCapicua();
+//esCapicua(2029);
+//esCapicua(1010);
+//esCapicua(1001);
 
 
 
-    /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
+
+
+//     /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
+
+const factorial = (numero = undefined) => {
+  if (numero === undefined) return console.warn(`Debes ingresar un numero`);
+  if (typeof numero !== "number") return console.error(`El dato ${numero} ingresado no es un numero`);
+  if (numero === 0) return console.info(`No se puede sacar factorial de numero 0`);
+  if (Math.sign(numero)=== -1) return console.warn(`el parametro ${numero} no puede ser negativo`);
+
+  let factorial = 1;
+  for (let i = numero; i >= 1; i--){
+    factorial *= i;
+  }
+  return console.log(factorial);
+}
+
+
+// factorial("5");
+// factorial();
+// factorial(5);
+// factorial(0)
+// factorial(-5);
+
+
 
 
 
     /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
   
-/*
-    function esPrimo(numero) {
-      for (let i=2; i<numero; i++){
-        if(numero % i === 0){
-          return false;
-        }  
-      }
-     return true;
-    }
-*/
 
+    const esPrimo = (numero)=> {
+      if (!numero) return console.error(`Debes ingresar un numero`);
+      if (typeof numero !== "number") return console.warn(`el valor ingresado no es tipo numero`);
+      for (let i=2; i<numero; i++){
+        if (numero % i === 0){
+          return console.log(false);
+        }
+        return console.log(true);
+      }
+    }
+    // esPrimo(7);
 
     /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
-    /*
-    function esPar(numero){
-      if(numero%2===0){
-        return "el numero " +numero + " es par";
-      } else {
-        return `el numero ${numero} es impar`};
-        
-  }
+    
+    const esPar = (numero) =>{
+      if (!numero) return console.log(`Debes ingresar un numero`);
+      if (typeof numero !== "number") return console.log(`el valor ${numero} no es un numero`);
 
-    console.log(esPar(4));
+      (numero%2===0)
+        ? console.log("el numero " +numero + " es par")
+        : console.warn(`el numero ${numero} es impar`);
+      } 
+    
+    // esPar(5);
+    // esPar("5");
+    // esPar();
 
-*/
 
     /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
+    const conversor = (temperatura=undefined, medida="") => {
+      if (temperatura===undefined){
+        console.warm(`Debes especificar temperatura para poder hacer la conversion`);
+      }
+      if (!medida){
+        console.log(`Debes registrar "F" para faranheith o "C" para celsius`);
+      }
+      if (typeof(medida) !=="string"){
+        console.error(`Debes ingresar texto`);
+      }
+      if (medida.toUpperCase() !== "F" && medida.toUpperCase() !== "C"){
+        console.log(`Estas ingresando ${medida} es un parametro invalido`)
+      }
+      if(medida.toUpperCase()==="F"){
+        return console.log((temperatura - 32) * 5/9 +"F");
+      }
+      if (medida.toUpperCase()==="C"){
+        return console.log((temperatura * 9/5) + 32 +"C");
+      }
+
+    }
+
+  //  conversor(50,"c");
 
 
 
@@ -231,8 +313,20 @@ repetir(repetido, 3);
 
 
     /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
+    const aplicarDescuento = (valor, descuento) => { 
+      if(!valor) return console.log(`No estas ingresando un valor`);
+      if (typeof(valor)!=="number") return console.log(`El valor "${valor}" no es un numero`);
+      if (!descuento) return console.log(`No estas ingresando el valor del descuento`);
+      if (typeof(descuento)!=="number") return console.log(`el descuento no es posible aplicarlo porque no es un numero`);
 
+      let descuentoAAplicar = (valor * descuento)/100;
+      return console.log(valor - descuentoAAplicar);
+    }
 
+    // aplicarDescuento(1000,20);
+    // aplicarDescuento(1000);
+    // aplicarDescuento("Hola",20);
+    // aplicarDescuento(1000,"Hola");
 
     /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
 
@@ -251,6 +345,9 @@ repetir(repetido, 3);
 
 
     /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25] */
+      const elevadoAlCuadrado = () => {
+
+      }
 
 
 
