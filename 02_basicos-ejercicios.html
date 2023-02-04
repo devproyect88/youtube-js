@@ -184,7 +184,7 @@ const eliminarCaracteres = (cadena, patron) => {
 }
 
 //eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
-//eliminarCaracteres("esto es una prueba donde vamos a hablar mierda", "[a-z]");
+//eliminarCaracteres("esto es una prueba donde vamos a hablar cosas raras", "[a-z]");
 
 
 
@@ -284,90 +284,336 @@ const factorial = (numero = undefined) => {
     /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
     const conversor = (temperatura=undefined, medida="") => {
       if (temperatura===undefined){
-        console.warm(`Debes especificar temperatura para poder hacer la conversion`);
+        return console.warm(`Debes especificar temperatura para poder hacer la conversion`);
+      }
+      if (typeof temperatura !== "number"){
+        return console.warn(`el parametro ${temperatura} no es un numero y no se puede realizar la conversión.`)
       }
       if (!medida){
-        console.log(`Debes registrar "F" para faranheith o "C" para celsius`);
+        return console.warn(`Debes registrar el parametro medida "F" para faranheith o "C" para celsius`);
       }
       if (typeof(medida) !=="string"){
-        console.error(`Debes ingresar texto`);
+        return console.error(`Debes ingresar texto`);
       }
       if (medida.toUpperCase() !== "F" && medida.toUpperCase() !== "C"){
-        console.log(`Estas ingresando ${medida} es un parametro invalido`)
+        return console.error(`Estas ingresando "${medida}" es una unidad de medida invalida`)
       }
       if(medida.toUpperCase()==="F"){
-        return console.log((temperatura - 32) * 5/9 +"F");
+        return console.log((temperatura - 32) * 5/9 +"C");
       }
       if (medida.toUpperCase()==="C"){
-        return console.log((temperatura * 9/5) + 32 +"C");
+        return console.log((temperatura * 9/5) + 32 +"F");
       }
 
     }
 
-  //  conversor(50,"c");
+    // conversor("20","e");
+    // conversor(10,"e");
+    // conversor(0,"c");
+    // conversor(10);
 
 
 
     /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
+    const convertirNumero = (numero, base) => {
+      if (!numero) return console.warn(`Debes ingresar un numero`);
+      if (typeof numero !== "number") return console.error(`Debes ingresar un tipo de dato numero`);
+      if (!base) return console.warn(`Debes ingresar un numero de base`);
+      if (typeof base !== "number") return console.error(`Debes ingresar un tipo de dato numero base 2 (binario) o base 10(decimal)`);
+      if (base!==10 && base !== 2) return console.log(`Debes ingresar un tipo de base valido`);
+      
+
+      if (base===2)
+      return console.log(`${numero} en base ${base}  = ${parseInt(numero,base)} en base 10`);
+
+      else if (base===10)
+      return console.log(`${numero} en base ${base}  = ${numero.toString(base)} en base 2`);
+
+    }
+
+
+    // convertirNumero();
+    // convertirNumero(10,"2");
+    // convertirNumero(10);
+    // convertirNumero(1001,2);
+    // convertirNumero(10,2);
+    // convertirNumero(100,10);
+    // convertirNumero(4,10);
+    // convertirNumero(100001000,2);
+    
+
+
+
 
 
 
     /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
     const aplicarDescuento = (valor, descuento) => { 
-      if(!valor) return console.log(`No estas ingresando un valor`);
-      if (typeof(valor)!=="number") return console.log(`El valor "${valor}" no es un numero`);
-      if (!descuento) return console.log(`No estas ingresando el valor del descuento`);
-      if (typeof(descuento)!=="number") return console.log(`el descuento no es posible aplicarlo porque no es un numero`);
+      (!valor)
+        ? console.error(`No estas ingresando un valor`)
+        : (typeof valor !=="number")
+          ? console.warn(`El valor "${valor}" no es un numero`)
+          :(!descuento)
+            ? console.log(`No estas ingresando el valor del descuento`)
+            :(typeof(descuento)!=="number")
+              ? console.error(`el descuento no es posible aplicarlo porque no es un numero`)
+              : console.log((valor)-((valor * descuento)/100));
 
-      let descuentoAAplicar = (valor * descuento)/100;
-      return console.log(valor - descuentoAAplicar);
     }
 
     // aplicarDescuento(1000,20);
     // aplicarDescuento(1000);
     // aplicarDescuento("Hola",20);
     // aplicarDescuento(1000,"Hola");
+    // aplicarDescuento(1000);
 
     /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
 
 
 
     /* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5 */
+    const numeroVocalesConsonantes = (texto) => {
+  
+      for (const letra of texto){
+        let vocales = 0,
+          consonantes = 0;
 
+        let regVocales = /[aeiouáéíóAEIOUÁÉÍÓÚ]/.test(letra);
+        let regConsonantes = /[bcdfghjklmnpqrstwxyvzBCDEFGHJKLMNPQRSTWYVXZ]/.test(letra);
+        
 
+        if (regVocales === true){
+          vocales++
+        }
+        if (regConsonantes === true){
+        consonantes++
+        }
+     return console.log(`hay ${vocales} vocales en la cadena y hay ${consonantes} consonantes en la cadena`);
+    }
+ 
+
+}
+
+//numeroVocalesConsonantes("Hola mundo");
 
     /* 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero */
+    const nombreValido = (nombre) => {
+      //Validar expresion regular
+      if (!nombre) return console.log(`No ingresaste una cadena de texto`);
+      if (typeof nombre !== "string") return console.log(`el valor ${nombre} ingresado no es texto`);
+      
+      let regExp = /^[a-zñáéíóú\s]+$/ig.test(nombre);
+      (regExp)
+        ? console.log(`El nombre ${nombre} cumple con los criterios de nombre que podemos validar`)
+        : console.log(`El nombre ${nombre} no cumple con los criterios de nombre que podemos validar`);
+    }
+    // nombreValido();
+    // nombreValido(23456);
+    // nombreValido(true);
+    // nombreValido("ardaga@gmail.com");
+    // nombreValido("Aaron David Garcia Duque");
 
 
 
     /* 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero */
+    const correoValido = (correo) => {
+      //Validar expresion regular
+      if (!correo) return console.log(`No ingresaste una cadena de texto`);
+      if (typeof correo !== "string") return console.log(`el valor ${correo} ingresado no es texto`);
+      
+      let regExp = /^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/.test(correo);
+      (regExp)
+        ? console.log(`El nombre ${correo} cumple con los criterios de correo electronico que podemos validar`)
+        : console.log(`El nombre ${correo} no cumple con los criterios de electronico que podemos validar`);
+    }
 
+    // correoValido();
+    // correoValido(23456);
+    // correoValido(true);
+    // correoValido("ardaga@gmail.com");
+    // correoValido("Aaron David Garcia Duque");
 
 
     /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25] */
-      const elevadoAlCuadrado = () => {
+      const elevadoAlCuadrado = (arrayNumerico = undefined) => {
 
+        if (arrayNumerico === undefined) return console.warn(`Debes ingresar un array numerico para poder realizar la operación`);
+
+        if (!(arrayNumerico instanceof Array)) return console.log(`Debes ingresar un elemento de tipo array`);
+
+        let nuevoArray = [];
+
+        for (const elemento of arrayNumerico){
+
+          (typeof elemento !== "number")
+            ? console.log(`el valor ${elemento} del array no es un numero`)
+            : nuevoArray.push(Math.pow(elemento,2));
+        }
+        return console.log(nuevoArray);
       }
+
+    // elevadoAlCuadrado([1,2,3,4,5,6,7,8,9]);
+    // elevadoAlCuadrado(12,345);
+    // elevadoAlCuadrado("2,3,45,6");
+    // elevadoAlCuadrado([3,6,7,8,9,34]);
+    // elevadoAlCuadrado();
+
+
 
 
 
     /* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60] */
+    const retornaNumeros = (arrayNumeros) => {
+      if (arrayNumeros === undefined) return console.warn(`Debes ingresar un array numerico para poder realizar la operación`);
 
+      if (!(arrayNumeros instanceof Array)) return console.log(`Debes ingresar un elemento de tipo array`);
 
+      if (arrayNumeros.length === 0) return console.log(`No puedes ingresar un array vacio`);
+      
+      for (const numero of arrayNumeros){
+        
+        if(typeof numero !== "number") return console.log(`los componentes del array deben ser numericos`);
+      }
+        
+        return console.log([Math.max(...arrayNumeros),Math.min(...arrayNumeros)])
+              
+    }
+    
+// retornaNumeros();
+// retornaNumeros(`Hola mundo`);
+// retornaNumeros([]);
+// retornaNumeros([true,false,true]);
+// retornaNumeros([1, 4, 5, 99, -60]);
 
     /* 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]} */
+
+    const clasificarNumeros = (numeros) => {
+      if (numeros === undefined) return console.warn(`Debes ingresar un array numerico para poder realizar la operación`);
+      if (!(numeros instanceof Array)) return console.log(`Debes ingresar un elemento de tipo array`);
+      if (numeros.length === 0) return console.log(`No puedes ingresar un array vacio`);
+      
+      for (const numero of numeros){
+        
+        if(typeof numero !== "number") return console.log(`los componentes del array deben ser numericos`);
+      }
+
+      let pares = numeros.filter((num) => num % 2 === 0),
+        impares = numeros.filter((num) => num % 2 === 1);
+      
+    return console.log({pares: pares, impares: impares});
+
+  }
+
+  //  clasificarNumeros();
+  //  clasificarNumeros([]);
+  //  clasificarNumeros([true,false, true]);
+  //  clasificarNumeros(`Hola mundo`);
+  //  clasificarNumeros([1,2,3,4,5,6,7,8,9,0]);
+
 
 
 
     /* 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }*/
+    const ordenando = (numeros) => {
+      if (numeros === undefined) return console.warn(`Debes ingresar un array numerico para poder realizar la operación`);
+      if (!(numeros instanceof Array)) return console.log(`Debes ingresar un elemento de tipo array`);
+      if (numeros.length === 0) return console.log(`No puedes ingresar un array vacio`);
+      
+      for (const numero of numeros){
+        
+        if(typeof numero !== "number") return console.log(`los componentes del array deben ser numericos`);
+      }
+     
+      let ascendente = numeros.slice().sort();
+      let descendente = numeros.slice().sort().reverse();
+
+      return console.log({asc: ascendente, desc: descendente});
+    }
+    
+    //ordenando();
+    //ordenando([]);
+    //ordenando(`Hola mundo`);
+    //ordenando([2,3,4,`hola`]);
+    //ordenando([7, 5,7,8,6]);
+    
 
 
 
     /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
+    const eliminarDuplicado = (arreglo) => {  
+      if (!arreglo) return console.log(`Debes agregar un arreglo de elementos`);
+
+      if (!(arreglo instanceof Array)) return console.log(`Debes ingresar un parametro de tipo arreglo`);
+
+      if (arreglo.length === 0 || arreglo.length === 1) return console.log(`Debes ingresar mas de dos elemento en el array`);
+
+      return console.log (arreglo.filter((elemento, indice) => arreglo.indexOf(elemento) === indice
+
+      ));
+
+
+    }
 
 
 
     /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5 */
+    const promedio = (nuevoArreglo=undefined) => {
+      if (nuevoArreglo===undefined) return console.log(`Debes ingresar un Arreglo de numeros`);
+
+      if (!(nuevoArreglo instanceof Array)) return console.info(`Debes ingresar un parametro del tipo Array`);
+
+      if (nuevoArreglo.length === 0 || nuevoArreglo.length === 1) return console.warn(`Debes ingresar un array con una cantidad mayor o igual a dos numeros`);
+
+
+      let suma = 0;
+      for (const elemento of nuevoArreglo){
+        if (typeof elemento !=="number"){
+          
+           return console.error(`el elemento ${elemento} no es un numero, no es posible ejecutar la funcion`) } else
+           {
+            suma += elemento;
+          }
+          
+        } return console.log(`el promedio del valor los valores ${nuevoArreglo.join(" + ")} y el resultado es ${adiccion}`);
+
+        let validacion = nuevoArreglo.map()
+      }
+    
+     const promedio2 = (nuevoArreglo=[1,2,3,4,5,6]) => {
+      if (nuevoArreglo===undefined) return console.log(`Debes ingresar un Arreglo de numeros`);
+
+      if (!(nuevoArreglo instanceof Array)) return console.info(`Debes ingresar un parametro del tipo Array`);
+
+      if (nuevoArreglo.length === 0 || nuevoArreglo.length === 1) return console.warn(`Debes ingresar un array con una cantidad mayor o igual a dos numeros`);
+
+	 let adiccion;
+     for (const elemento of nuevoArreglo){
+          if (typeof elemento !=="number"){
+          
+           return console.error(`el elemento ${elemento} no es un numero, no es posible ejecutar la funcion`) } else
+           {
+            adiccion= nuevoArreglo.reduce((suma, numero)=> {
+              suma+=numero
+              return suma
+              },0)/nuevoArreglo.length; 
+          }
+          
+        } return console.log(`el promedio del valor los valores ${nuevoArreglo.join(" + ")} y el resultado es ${adiccion}`);
+      }
+
+    //promedio2();
+
+    
+
+    // promedio([9,8,7,6,5,4,3,2,1,0]);
+    // promedio();
+    // promedio({});
+    // promedio([]);
+    // promedio([4]);
+    // promedio(["hola", "buenos", "días"]);
+
+
+
 
 
 
@@ -388,7 +634,181 @@ const factorial = (numero = undefined) => {
 
         * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
         */
-  </script>
+
+        
+
+        class Pelicula{
+          constructor({idImdb, titulo, director, anioestreno, paisDeOrigen, genero, calificacionImdb}){
+            this.idImdb = idImdb;
+            this.titulo = titulo;
+            this.director = director;
+            this.anioestreno = anioestreno;
+            this.paisDeOrigen = paisDeOrigen;
+            this.genero = genero;
+            this.calificacionImdb = calificacionImdb;
+
+
+            this.validarIdImdb(idImdb);
+            this.validarTitulo(titulo);
+            this.validarDirector(director);
+            this.validarEstreno(anioestreno);
+            this.validarPais(paisDeOrigen);
+            this.validarGenero(genero);
+            this.validarCalificacion(calificacionImdb);
+
+          }
+          validarCadena(propiedad,valor){
+            if(!valor) return console.log(`Debes ingresar un valor para la propiedad ${propiedad}`);
+
+            if(typeof valor !=="string") return console.warn(`Debes ingresar una cadena de texto`);
+
+            return true;
+          }
+
+          validarNumero(propiedad, numero){
+            if (!numero) return console.log(`Debes ingresar un valor para la propiedad ${propiedad}`);
+
+            if (typeof numero !== "number") return console.error(`el Valor "${numero}" no es un numero"`);
+
+            return true;
+            
+          }
+
+          validarLongitud(propiedad, valor, longitud){
+            if(valor.length>longitud) return console.error(`El valor ${valor} de la propiedad ${propiedad} contiene mas de ${longitud} caracteres`);
+
+            return true;
+
+          }
+
+          validarArray(propiedad, array){
+            if(!array) return console.log(`Debes ingresar un valor de tipo Array`);
+
+            if (!(array instanceof Array)) return console.log(`El valor "${array}" no corresponde a un array`);
+
+            if (array.length === 0) return console.error(`el array ${array} no puede estar vacio`);
+
+            for (const cadena of array){
+              if (typeof cadena !=="string") return console.error(`El valor ${cadena} no es texto`);
+            }
+
+         
+
+            return true;
+          }
+
+          validarIdImdb(idImdb){
+            if(this.validarCadena("Imdb ID", idImdb))
+
+              if(!(/^([a-z]){2}([0-9]){7}$/.test(idImdb))) return console.error(`Debes agregar un IdIMDB valido con 2 letras iniciales y 7 numeros`);
+            
+          }
+
+          validarTitulo(titulo){
+            if(this.validarCadena("Titulo", titulo));
+              if(this.validarLongitud("Titulo", titulo, 100));
+              
+              return true;
+          }
+
+          validarDirector(director){
+            if (this.validarCadena("Director", director));
+              if (this.validarLongitud("Director", director, 50));
+
+              return true;
+          }
+
+          validarEstreno(anioestreno){
+          if (this.validarNumero("Año de estreno", anioestreno));
+            if (!(/^([0-9]){4}$/.test(anioestreno))) return console.warn(`El año de estreno ${anioestreno} que ingresaste no contiene 4 digitos, valida e intenta nuevamente`);
+
+          }
+
+          validarPais(paisDeOrigen){
+            if (this.validarArray("Pais de Origen", paisDeOrigen)) return true;
+          }
+
+          validarGenero(genero){
+            if(this.validarArray("Genero", genero));
+            for (const gen of genero)
+              if(!Pelicula.generosAceptados.includes(gen)) return console.error(`el genero ${gen} no esta incluido dentro de los generos aceptados`);
+
+              return true;
+              
+            }
+
+            static get generosAceptados(){
+            return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+          }
+
+          static validarGenerosAceptados(){
+
+            return console.log(`Los generos aceptados son ${this.generosAceptados.join(", ")}`);
+
+           }
+
+           validarCalificacion(calificacionImdb){
+            if (calificacionImdb < 0 || calificacionImdb > 10) return console.error(`Debes ingresar una calificacion entre 0 y 10`);
+
+            return calificacionImdb = calificacionImdb.toFixed(1);
+
+
+           }
+
+           fichaTecnica(){
+            console.info(`Id de la pelicula = ${this.idImdb}, Titulo = ${this.titulo}, Año de Estreno = ${this.anioestreno}, Pais(es) = ${this.paisDeOrigen}, Genero = ${this.genero.join("- ")}, Calificación = ${this.calificacionImdb}`);
+           }
+    
+
+          }
+
+          const pelis = [{
+          idImdb: "tt7654321",
+          titulo: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890",
+          director: "12345678901234567890123456789012345678901234567890",
+          anioestreno: 2012,
+          paisDeOrigen: ["Peru", "Mexico"],
+          genero: ["Comedy","Thriller"],
+          calificacionImdb: 7.8,},
+          {
+          idImdb: "tt1234567",
+          titulo: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890",
+          director: "12345678901234567890123456789012345678901234567890",
+          anioestreno: 2023,
+          paisDeOrigen: ["Colombia", "Mexico"],
+          genero: ["Comedy","Thriller"],
+          calificacionImdb: 7.8,},
+
+          {
+          idImdb: "tt0455679",
+          titulo: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890",
+          director: "12345678901234567890123456789012345678901234567890",
+          anioestreno: 2012,
+          paisDeOrigen: ["Australia", "Mexico"],
+          genero: ["Comedy","Thriller"],
+          calificacionImdb: 7.8,}];
+
+          pelis.forEach(elemento => elemento = new Pelicula(elemento).fichaTecnica());
+
+          
+        
+
+        peli = new Pelicula ({
+          idImdb: "tt1234567",
+          titulo: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890",
+          director: "12345678901234567890123456789012345678901234567890",
+          anioestreno: 2023,
+          paisDeOrigen: ["Colombia", "Mexico"],
+          genero: ["Comedy","Thriller"],
+          calificacionImdb: 7.8,
+        })
+
+     peli.fichaTecnica();
+
+      
+
+
+        </script>
 </body>
 
 </html>
